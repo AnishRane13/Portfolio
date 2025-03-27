@@ -1,4 +1,3 @@
-// About.jsx
 import { motion } from 'framer-motion';
 
 const About = () => {
@@ -77,8 +76,8 @@ const About = () => {
             </div>
             
             <div data-aos="fade-up" data-aos-delay="500" className="mt-8">
-              <a href="#" download className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors inline-block">
-                Download Resume
+              <a href="https://drive.google.com/file/d/1EYrgFpPRHlbHuPOCBdk3iC4jSYAl2HuE/view?usp=sharing" target="_blank" className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors inline-block">
+               View Resume
               </a>
             </div>
           </motion.div>
