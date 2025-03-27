@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { FaMoon, FaSun, FaBars, FaTimes } from 'react-icons/fa';
 
 const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -42,7 +42,7 @@ const Navbar = () => {
           transition={{ duration: 0.5 }}
           className="text-2xl font-bold text-blue-600 dark:text-blue-400"
         >
-          &lt;YourName /&gt;
+          &lt;Anish /&gt;
         </motion.div>
 
         {/* Mobile Menu Button */}

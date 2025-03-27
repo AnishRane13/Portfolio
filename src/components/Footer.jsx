@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-center md:text-left mb-4 md:mb-0">
-            <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400">&lt;YourName /&gt;</h3>
+            <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400">&lt;Anish /&gt;</h3>
             <p className="text-gray-600 dark:text-gray-400 mt-2">
               Made with <FaHeart className="inline text-red-500" /> and React
             </p>

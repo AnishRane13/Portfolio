@@ -19,17 +19,17 @@ const Hero = () => {
             Building modern web applications with passion
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg">
-            Hi! I'm [Your Name], a full stack developer specializing in 
+            Hi! I'm Anish Rane, a full stack developer specializing in 
             creating responsive and user-friendly web applications with modern technologies.
           </p>
           <div className="flex space-x-4 mb-8">
-            <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">
+            <a href="https://github.com/AnishRane13" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">
               <FaGithub size={28} />
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">
+            <a href="https://www.linkedin.com/in/anish-rane13/" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">
               <FaLinkedin size={28} />
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">
+            <a href="https://x.com/Anish_Rane_178" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">
               <FaTwitter size={28} />
             </a>
           </div>
