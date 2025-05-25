@@ -30,7 +30,7 @@ const Footer = () => {
         
         <div className="text-center mt-6">
           <p className="text-gray-600 dark:text-gray-400">
-            &copy; {year} [Your Name]. All rights reserved.
+            &copy; {year} Anish. All rights reserved.
           </p>
         </div>
       </div>

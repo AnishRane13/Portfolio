@@ -1,18 +1,35 @@
-// Contact.jsx
+// Contact.jsx with EmailJS integration
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [formStatus, setFormStatus] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const formRef = useRef(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a real app, you would send the form data to an API
-    // This is just a simulation
-    setFormStatus("success");
-    formRef.current.reset();
+    setIsLoading(true);
+
+    try {
+      const result = await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      console.log("Email sent successfully:", result.text);
+      setFormStatus("success");
+      formRef.current.reset();
+    } catch (error) {
+      console.error("Email send failed:", error);
+      setFormStatus("error");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -114,7 +131,7 @@ const Contact = () => {
                   <input
                     type="text"
                     id="name"
-                    name="name"
+                    name="user_name"
                     required
                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                   />
@@ -130,7 +147,7 @@ const Contact = () => {
                   <input
                     type="email"
                     id="email"
-                    name="email"
+                    name="user_email"
                     required
                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
                   />
@@ -170,15 +187,23 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors"
+                  disabled={isLoading}
+                  className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-2 px-4 rounded-lg transition-colors"
                 >
-                  Send Message
+                  {isLoading ? "Sending..." : "Send Message"}
                 </button>
               </form>
 
               {formStatus === "success" && (
                 <div className="mt-4 p-3 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-lg">
                   Thank you! Your message has been sent successfully.
+                </div>
+              )}
+
+              {formStatus === "error" && (
+                <div className="mt-4 p-3 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-lg">
+                  Sorry, there was an error sending your message. Please try
+                  again.
                 </div>
               )}
             </div>
