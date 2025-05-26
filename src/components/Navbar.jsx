@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Sun, Moon, Menu, X, Code2, Zap } from 'lucide-react';
 
 const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
