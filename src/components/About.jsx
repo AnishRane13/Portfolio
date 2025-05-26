@@ -94,7 +94,7 @@ const About = () => {
           </h2>
           
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Frontend Developer with 1+ years of experience crafting modern, responsive web applications
+            Software Developer with 1+ years of experience crafting modern, responsive web applications
           </p>
         </div>
 
@@ -130,7 +130,7 @@ const About = () => {
                   <div className="text-center mt-6">
                     <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">Anish Rane</h3>
                     <p className="text-lg font-semibold bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 dark:from-cyan-400 dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-                      Frontend Developer
+                      Software Developer
                     </p>
                   </div>
                 </div>
@@ -203,7 +203,7 @@ const About = () => {
                   
                   <div className="space-y-4 text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
                     <p>
-                      I'm a passionate <span className="font-semibold text-orange-600 dark:text-cyan-400">Frontend Developer</span> with 1+ years of experience 
+                      I'm a passionate <span className="font-semibold text-orange-600 dark:text-cyan-400">Software Developer</span> with 1+ years of experience 
                       in building responsive, high-performance web applications using React.js, Tailwind CSS, JavaScript, and TypeScript.
                     </p>
                     

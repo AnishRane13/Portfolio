@@ -65,7 +65,7 @@ const Hero = () => {
             {/* Subtitle */}
             <div className="relative mb-8">
               <h2 className="text-2xl lg:text-4xl font-bold text-gray-700 dark:text-gray-200 mb-4">
-                Full Stack Developer
+                Software Developer
               </h2>
               <div className="absolute -left-2 top-0 w-1 h-full bg-gradient-to-b from-orange-500 via-red-500 to-pink-500 dark:from-cyan-500 dark:via-blue-500 dark:to-purple-500 rounded-full"></div>
             </div>
