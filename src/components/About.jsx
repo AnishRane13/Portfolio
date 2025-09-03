@@ -94,7 +94,7 @@ const About = () => {
           </h2>
           
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Software Developer with 1+ years of experience crafting modern, responsive web applications
+            Software Developer with 1.9+ years of experience crafting modern, responsive web applications
           </p>
         </div>
 
