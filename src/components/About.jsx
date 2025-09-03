@@ -12,7 +12,7 @@ const About = () => {
   const personalInfo = [
     { icon: MapPin, label: 'Location', value: 'Mumbai, Maharashtra' },
     { icon: Mail, label: 'Email', value: 'anishrane1305@gmail.com' },
-    { icon: Calendar, label: 'Experience', value: '1+ Years' },
+    { icon: Calendar, label: 'Experience', value: '1.9+ Years' },
     { icon: Award, label: 'Availability', value: 'Full-time' }
   ];
 
