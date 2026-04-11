@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Code2, Database, Globe, Server, Sparkles, TrendingUp, Zap } from 'lucide-react';
+import { Code2, Cloud, Server, Sparkles, TrendingUp, Zap } from 'lucide-react';
 
 const Skills = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -19,60 +19,46 @@ const Skills = () => {
 
   const frontendSkills = [
     { 
-      name: 'React', 
+      name: 'React.js', 
       icon: '⚛️', 
-      level: 90, 
+      level: 92, 
       color: 'from-blue-500 to-cyan-500',
-      description: 'Component-based UI library'
-    },
-    { 
-      name: 'JavaScript', 
-      icon: '🟨', 
-      level: 85, 
-      color: 'from-yellow-400 to-orange-500',
-      description: 'Dynamic programming language'
-    },
-    { 
-      name: 'TypeScript', 
-      icon: '🔷', 
-      level: 80, 
-      color: 'from-blue-600 to-indigo-600',
-      description: 'Typed JavaScript superset'
-    },
-    { 
-      name: 'HTML5', 
-      icon: '🌐', 
-      level: 95, 
-      color: 'from-orange-500 to-red-500',
-      description: 'Modern markup language'
-    },
-    { 
-      name: 'CSS3', 
-      icon: '🎨', 
-      level: 90, 
-      color: 'from-blue-400 to-purple-500',
-      description: 'Advanced styling & animations'
-    },
-    { 
-      name: 'Tailwind', 
-      icon: '💨', 
-      level: 85, 
-      color: 'from-teal-400 to-cyan-500',
-      description: 'Utility-first CSS framework'
-    },
-    { 
-      name: 'Redux', 
-      icon: '🔮', 
-      level: 75, 
-      color: 'from-purple-500 to-pink-500',
-      description: 'State management library'
+      description: 'Components, hooks, production UIs'
     },
     { 
       name: 'Next.js', 
       icon: '▲', 
-      level: 80, 
+      level: 88, 
       color: 'from-gray-700 to-gray-900 dark:from-gray-300 dark:to-white',
-      description: 'React production framework'
+      description: 'App Router, SSR, v14+'
+    },
+    { 
+      name: 'TypeScript', 
+      icon: '🔷', 
+      level: 86, 
+      color: 'from-blue-600 to-indigo-600',
+      description: 'Typed apps end to end'
+    },
+    { 
+      name: 'JavaScript', 
+      icon: '🟨', 
+      level: 90, 
+      color: 'from-yellow-400 to-orange-500',
+      description: 'ES6+ modern JS'
+    },
+    { 
+      name: 'Redux', 
+      icon: '🔮', 
+      level: 82, 
+      color: 'from-purple-500 to-pink-500',
+      description: 'State for complex flows'
+    },
+    { 
+      name: 'Tailwind CSS', 
+      icon: '💨', 
+      level: 90, 
+      color: 'from-teal-400 to-cyan-500',
+      description: 'Rapid, consistent styling'
     },
   ];
 
@@ -80,30 +66,75 @@ const Skills = () => {
     { 
       name: 'Node.js', 
       icon: '🟢', 
-      level: 85, 
+      level: 88, 
       color: 'from-green-500 to-emerald-500',
-      description: 'JavaScript runtime environment'
+      description: 'APIs and services'
     },
     { 
-      name: 'Express', 
+      name: 'NestJS', 
+      icon: '🐱', 
+      level: 85, 
+      color: 'from-red-600 to-rose-600',
+      description: 'Structured backend apps'
+    },
+    { 
+      name: 'Express.js', 
       icon: '🚀', 
-      level: 80, 
+      level: 84, 
       color: 'from-gray-600 to-gray-800',
-      description: 'Fast web framework'
+      description: 'REST APIs'
+    },
+    { 
+      name: 'PostgreSQL', 
+      icon: '🐘', 
+      level: 86, 
+      color: 'from-blue-700 to-indigo-800',
+      description: 'Relational data & queries'
     },
     { 
       name: 'MongoDB', 
       icon: '🍃', 
-      level: 75, 
+      level: 78, 
       color: 'from-green-600 to-green-800',
-      description: 'NoSQL database'
+      description: 'Document storage'
     },
     { 
-      name: 'SQL', 
-      icon: '🗄️', 
-      level: 70, 
-      color: 'from-blue-700 to-blue-900',
-      description: 'Database query language'
+      name: 'WebSockets', 
+      icon: '🔌', 
+      level: 83, 
+      color: 'from-violet-500 to-purple-600',
+      description: 'Live updates & streaming'
+    },
+  ];
+
+  const cloudSkills = [
+    {
+      name: 'AWS',
+      icon: '☁️',
+      level: 80,
+      color: 'from-amber-500 to-orange-600',
+      description: 'EC2, S3, Cognito, DynamoDB',
+    },
+    {
+      name: 'Azure',
+      icon: '🔷',
+      level: 72,
+      color: 'from-sky-500 to-blue-700',
+      description: 'Cloud services',
+    },
+    {
+      name: 'Stripe / Razorpay',
+      icon: '💳',
+      level: 82,
+      color: 'from-indigo-500 to-violet-600',
+      description: 'Payments & webhooks',
+    },
+    {
+      name: 'NGINX · Git',
+      icon: '🛠️',
+      level: 85,
+      color: 'from-slate-500 to-slate-700',
+      description: 'Deploy & version control',
     },
   ];
 
@@ -217,9 +248,9 @@ const Skills = () => {
           </h2>
           
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Crafting digital experiences with cutting-edge technologies and modern development practices. 
-            <span className="font-semibold text-orange-600 dark:text-cyan-400"> Innovation</span> meets 
-            <span className="font-semibold text-red-600 dark:text-blue-400"> precision</span> in every project.
+            Stack aligned with what I use day to day: strong{' '}
+            <span className="font-semibold text-orange-600 dark:text-cyan-400">frontend</span>, solid{' '}
+            <span className="font-semibold text-red-600 dark:text-blue-400">APIs & data</span>, and cloud-aware delivery.
           </p>
         </div>
 
@@ -235,7 +266,7 @@ const Skills = () => {
             <div className="h-px flex-1 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 dark:from-cyan-500 dark:via-blue-500 dark:to-purple-500 max-w-32"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {frontendSkills.map((skill, index) => (
               <SkillCard key={skill.name} skill={skill} index={index} category="frontend" />
             ))}
@@ -243,20 +274,39 @@ const Skills = () => {
         </div>
 
         {/* Backend Skills */}
-        <div>
+        <div className="mb-20">
           <div className={`flex items-center justify-center gap-4 mb-12 transition-all duration-1000 ease-out delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <div className="p-3 bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-2xl border border-gray-200/40 dark:border-gray-700/40 shadow-lg">
               <Server className="w-8 h-8 text-red-500 dark:text-blue-400" />
             </div>
             <h3 className="text-3xl lg:text-4xl font-bold text-gray-800 dark:text-white">
-              Backend Development
+              Backend & data
             </h3>
             <div className="h-px flex-1 bg-gradient-to-r from-red-500 via-pink-500 to-orange-500 dark:from-blue-500 dark:via-purple-500 dark:to-cyan-500 max-w-32"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {backendSkills.map((skill, index) => (
-              <SkillCard key={skill.name} skill={skill} index={index + 8} category="backend" />
+              <SkillCard key={skill.name} skill={skill} index={index + 6} category="backend" />
+            ))}
+          </div>
+        </div>
+
+        {/* Cloud & tools */}
+        <div>
+          <div className={`flex items-center justify-center gap-4 mb-12 transition-all duration-1000 ease-out delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="p-3 bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-2xl border border-gray-200/40 dark:border-gray-700/40 shadow-lg">
+              <Cloud className="w-8 h-8 text-orange-500 dark:text-cyan-400" />
+            </div>
+            <h3 className="text-3xl lg:text-4xl font-bold text-gray-800 dark:text-white">
+              Cloud & tools
+            </h3>
+            <div className="h-px flex-1 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 dark:from-cyan-500 dark:via-blue-500 dark:to-purple-500 max-w-32"></div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {cloudSkills.map((skill, index) => (
+              <SkillCard key={skill.name} skill={skill} index={index + 12} category="cloud" />
             ))}
           </div>
         </div>
@@ -264,9 +314,9 @@ const Skills = () => {
         {/* Stats Section */}
         <div className={`mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 ease-out delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {[
-            { icon: <TrendingUp className="w-8 h-8" />, value: '12+', label: 'Technologies Mastered', color: 'from-orange-500 to-red-500 dark:from-cyan-500 dark:to-blue-500' },
-            { icon: <Zap className="w-8 h-8" />, value: '7+', label: 'Projects Completed', color: 'from-red-500 to-pink-500 dark:from-blue-500 dark:to-purple-500' },
-            { icon: <Sparkles className="w-8 h-8" />, value: '1.5+', label: 'Years Experience', color: 'from-pink-500 to-orange-500 dark:from-purple-500 dark:to-cyan-500' }
+            { icon: <TrendingUp className="w-8 h-8" />, value: '2.5+', label: 'Years shipping web apps', color: 'from-orange-500 to-red-500 dark:from-cyan-500 dark:to-blue-500' },
+            { icon: <Zap className="w-8 h-8" />, value: 'AI · SaaS · Fintech', label: 'Domains I have built in', color: 'from-red-500 to-pink-500 dark:from-blue-500 dark:to-purple-500' },
+            { icon: <Sparkles className="w-8 h-8" />, value: 'End-to-end', label: 'React to PostgreSQL', color: 'from-pink-500 to-orange-500 dark:from-purple-500 dark:to-cyan-500' }
           ].map((stat, index) => (
             <div key={index} className="group relative bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-3xl p-8 border border-gray-200/40 dark:border-gray-700/40 shadow-xl hover:shadow-2xl transition-all duration-500 text-center overflow-hidden">
               <div className={`absolute inset-0 bg-gradient-to-r ${stat.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>

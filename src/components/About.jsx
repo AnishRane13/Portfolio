@@ -12,8 +12,8 @@ const About = () => {
   const personalInfo = [
     { icon: MapPin, label: 'Location', value: 'Mumbai, Maharashtra' },
     { icon: Mail, label: 'Email', value: 'anishrane1305@gmail.com' },
-    { icon: Calendar, label: 'Experience', value: '1.9+ Years' },
-    { icon: Award, label: 'Availability', value: 'Full-time' }
+    { icon: Calendar, label: 'Experience', value: '2.5+ years' },
+    { icon: Award, label: 'Focus', value: 'Full-stack web (AI/SaaS, fintech)' }
   ];
 
   const education = [
@@ -35,37 +35,62 @@ const About = () => {
 
   const experience = [
     {
-      title: "Software Developer",
-      company: "Chintan Systems Private Limited",
-      period: "July 2024 - Present",
+      title: "FullStack Developer",
+      company: "Mactores Cognition Private Limited",
+      period: "November 2025 – Present",
       type: "Full-time",
       icon: Briefcase,
       highlights: [
-        "Led frontend development of Society Management System using React, Vite, and Tailwind CSS",
-        "Developed AI-powered ad generation platform with ChatGPT-like interface",
-        "Translated Figma designs into pixel-perfect React components",
-        "Built comprehensive event management system with payment integration"
+        "Built an AI-powered ad generation platform (React, Vite, NestJS, PostgreSQL), improving ad generation speed by 60% with a custom editor and real-time preview.",
+        "Integrated OpenAI and Anthropic APIs for dynamic chat UI and auto-populated templates, reducing manual input by 40%.",
+        "Designed invitation-based onboarding with Next.js, AWS Cognito, and DynamoDB—time-limited tokens and invitation tracking.",
+        "Developed real-time pipeline monitoring with WebSockets: streaming logs, live status, auto-reconnect, and stage-based visualization.",
+        "Integrated a context-aware AI chat (Next.js, WebSockets) for codebase and database insights with streaming responses."
       ]
     },
     {
-      title: "Software Developer Intern",
+      title: "Software Developer",
       company: "Chintan Systems Private Limited",
-      period: "January 2024 - June 2024",
-      type: "Internship",
+      period: "January 2024 – November 2025",
+      type: "Full-time",
       icon: Code,
       highlights: [
-        "Worked on P2P lending financial web app in Deno Fresh",
-        "Integrated HubSpot CRM for secure form submissions",
-        "Migrated company website to Deno Fresh with multilingual support",
-        "Boosted website traffic by 40% through optimization"
+        "Led frontend for a society management platform (React, Vite, Tailwind) serving 1,000+ residents with billing and accounts.",
+        "Built a full-stack P2P lending app—React frontend and Node.js/PostgreSQL backend including loan lifecycle and dashboards.",
+        "Implemented Stripe and Razorpay with webhook-driven flows to improve transaction success across platforms."
       ]
     }
   ];
 
   const skills = {
-    frontend: ["React.js", "Redux", "JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap", "Figma"],
-    backend: ["Node.js", "Deno", "PostgreSQL", "REST API Development"],
-    tools: ["Vite", "NGINX", "Git", "GitHub", "GitLab", "Gitea"]
+    frontend: [
+      "React.js",
+      "Next.js (v14+)",
+      "TypeScript",
+      "JavaScript (ES6+)",
+      "Redux",
+      "Tailwind CSS",
+      "React Hooks"
+    ],
+    backend: [
+      "Node.js",
+      "NestJS",
+      "Express.js",
+      "REST APIs",
+      "WebSockets",
+      "PostgreSQL",
+      "MongoDB"
+    ],
+    tools: [
+      "AWS (EC2, S3)",
+      "Azure",
+      "NGINX",
+      "Stripe",
+      "Razorpay",
+      "HubSpot (HubL)",
+      "Strapi",
+      "Git"
+    ]
   };
 
   return (
@@ -94,7 +119,7 @@ const About = () => {
           </h2>
           
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Software Developer with 1.9+ years of experience crafting modern, responsive web applications
+            Full-stack engineer with 2.5+ years shipping scalable apps in AI/SaaS and fintech
           </p>
         </div>
 
@@ -130,7 +155,7 @@ const About = () => {
                   <div className="text-center mt-6">
                     <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">Anish Rane</h3>
                     <p className="text-lg font-semibold bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 dark:from-cyan-400 dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-                      Software Developer
+                      Full-Stack Software Engineer
                     </p>
                   </div>
                 </div>
@@ -203,25 +228,21 @@ const About = () => {
                   
                   <div className="space-y-4 text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
                     <p>
-                      I'm a passionate <span className="font-semibold text-orange-600 dark:text-cyan-400">Software Developer</span> with 1.9+ years of experience 
-                      in building responsive, high-performance web applications using React.js, Tailwind CSS, JavaScript, and TypeScript.
+                      I'm a <span className="font-semibold text-orange-600 dark:text-cyan-400">Full-Stack Software Engineer</span> with 2.5+ years
+                      building scalable web applications across AI/SaaS and fintech. I focus on React.js, Node.js, NestJS, and PostgreSQL—and on
+                      outcomes: faster features, lower latency, and fewer manual steps.
                     </p>
                     
                     <p>
-                      My journey in web development began with a fascination for creating interactive user experiences. 
-                      I specialize in <span className="font-semibold text-red-600 dark:text-blue-400">optimizing UI/UX</span>, developing reusable components, 
-                      and integrating REST APIs to build seamless digital experiences.
+                      Recent work includes an <span className="font-semibold text-red-600 dark:text-blue-400">AI-powered ad platform</span> with a custom editor
+                      and real-time preview, secure onboarding with Cognito and DynamoDB, and live pipeline monitoring over WebSockets.
+                      Earlier, I led frontend for a society management product serving 1,000+ residents and shipped a full-stack P2P lending app with
+                      Stripe and Razorpay integrations.
                     </p>
                     
                     <p>
-                      Currently working at <span className="font-semibold text-pink-600 dark:text-purple-400">Chintan Systems Private Limited</span>, 
-                      where I lead frontend development of complex systems including Society Management platforms, 
-                      AI-powered ad generation tools, and comprehensive event management systems.
-                    </p>
-                    
-                    <p>
-                      When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, 
-                      or sharing my knowledge through technical discussions and mentoring aspiring developers.
+                      I'm now at <span className="font-semibold text-pink-600 dark:text-purple-400">Mactores Cognition</span>, building products that combine
+                      strong UX with reliable backends. Outside of work I stay curious about tooling, performance, and clean architecture.
                     </p>
                   </div>
                 </div>
@@ -304,9 +325,9 @@ const About = () => {
                     {Object.entries(skills).map(([category, skillList], index) => (
                       <div key={category}>
                         <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-4 capitalize">
-                          {category === 'frontend' ? 'Frontend Technologies' : 
-                           category === 'backend' ? 'Backend & Databases' : 
-                           'Build Tools & Collaboration'}
+                          {category === 'frontend' ? 'Frontend' : 
+                           category === 'backend' ? 'Backend & databases' : 
+                           'Cloud & tools'}
                         </h4>
                         
                         <div className="flex flex-wrap gap-3">

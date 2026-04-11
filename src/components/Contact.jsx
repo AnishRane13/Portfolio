@@ -227,7 +227,7 @@ const Contact = () => {
                     {
                       icon: Mail,
                       title: "Email",
-                      value: "anish.rane1305@gmail.com",
+                      value: "anishrane1305@gmail.com",
                       gradient:
                         "from-orange-500 to-red-500 dark:from-cyan-500 dark:to-blue-500",
                     },

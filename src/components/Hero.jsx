@@ -65,18 +65,35 @@ const Hero = () => {
             {/* Subtitle */}
             <div className="relative mb-8">
               <h2 className="text-2xl lg:text-4xl font-bold text-gray-700 dark:text-gray-200 mb-4">
-                Software Developer
+                Full-Stack Software Engineer
               </h2>
               <div className="absolute -left-2 top-0 w-1 h-full bg-gradient-to-b from-orange-500 via-red-500 to-pink-500 dark:from-cyan-500 dark:via-blue-500 dark:to-purple-500 rounded-full"></div>
             </div>
 
             {/* Description */}
-            <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-2xl leading-relaxed">
-              Building modern web applications with passion and precision. I specialize in creating 
-              <span className="font-semibold text-orange-600 dark:text-cyan-400"> responsive</span> and 
-              <span className="font-semibold text-red-600 dark:text-blue-400"> user-friendly</span> experiences 
-              with cutting-edge technologies.
+            <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-400 mb-6 max-w-2xl leading-relaxed">
+              2.5+ years building scalable web apps across{' '}
+              <span className="font-semibold text-orange-600 dark:text-cyan-400">AI/SaaS</span> and{' '}
+              <span className="font-semibold text-red-600 dark:text-blue-400">fintech</span>. I work primarily with
+              React, Node.js, NestJS, and PostgreSQL—and care about measurable outcomes.
             </p>
+            <div className="flex flex-wrap gap-3 mb-10 max-w-2xl">
+              {[
+                { label: '60%', sub: 'faster ad generation' },
+                { label: '70%', sub: 'lower API latency' },
+                { label: '40%', sub: 'less manual work' },
+              ].map((m) => (
+                <div
+                  key={m.sub}
+                  className="px-4 py-2 rounded-2xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 shadow-md"
+                >
+                  <span className="font-bold bg-gradient-to-r from-orange-600 to-red-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">
+                    {m.label}
+                  </span>
+                  <span className="text-sm text-gray-600 dark:text-gray-400 ml-1.5">{m.sub}</span>
+                </div>
+              ))}
+            </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
@@ -163,13 +180,13 @@ const Hero = () => {
               {/* Skill Tags */}
               <div className="absolute -right-16 top-16">
                 <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl px-4 py-2 rounded-full border border-gray-200/50 dark:border-gray-700/50 shadow-lg animate-float animation-delay-1000">
-                  <span className="text-sm font-semibold bg-gradient-to-r from-orange-600 to-red-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">React</span>
+                  <span className="text-sm font-semibold bg-gradient-to-r from-orange-600 to-red-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">Next.js</span>
                 </div>
               </div>
               
               <div className="absolute -left-16 bottom-32">
                 <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl px-4 py-2 rounded-full border border-gray-200/50 dark:border-gray-700/50 shadow-lg animate-float animation-delay-1500">
-                  <span className="text-sm font-semibold bg-gradient-to-r from-red-600 to-pink-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">Node.js</span>
+                  <span className="text-sm font-semibold bg-gradient-to-r from-red-600 to-pink-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">NestJS</span>
                 </div>
               </div>
             </div>

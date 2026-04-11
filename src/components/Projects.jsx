@@ -22,9 +22,10 @@ const Projects = () => {
     {
       id: 1,
       title: "Movix",
-      description: "A comprehensive movie recommendation platform featuring trending content, detailed ratings, immersive trailers, and curated essential details for entertainment enthusiasts.",
+      description:
+        "Movie discovery with the TMDB API: search, trending titles, and trailers. Roughly 40% better perceived performance through code-splitting, lazy loading, and a responsive Tailwind UI.",
       image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&h=320&fit=crop&auto=format",
-      tags: ["react", "redux", "tailwind"],
+      tags: ["react", "redux", "tmdb", "tailwind", "javascript"],
       github: "https://github.com/AnishRane13/Movix",
       category: "frontend",
       gradient: "from-purple-500 via-pink-500 to-red-500",
@@ -33,9 +34,10 @@ const Projects = () => {
     {
       id: 2,
       title: "Freelance Marketplace",
-      description: "Full-featured marketplace connecting businesses with talented freelancers. Complete project lifecycle management from job posting to secure payment processing.",
+      description:
+        "Full-stack marketplace with real-time bidding, JWT auth, contract management, REST APIs, WebSocket updates, and AWS S3—structured to cut API latency by about 70% versus the initial design.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=320&fit=crop&auto=format",
-      tags: ["react", "redux", "tailwind", "javascript", "node", "postgres", "aws"],
+      tags: ["react", "node", "postgres", "tailwind", "websockets", "aws"],
       github: "https://github.com/AnishRane13/Freelance-Marketplace",
       category: "fullstack",
       gradient: "from-blue-500 via-cyan-500 to-teal-500",
@@ -72,10 +74,11 @@ const Projects = () => {
   const filters = [
     { name: "all", label: "All Projects", icon: "🌟" },
     { name: "react", label: "React", icon: "⚛️" },
-    { name: "node", label: "Node.js", icon: "🟢" },
-    { name: "typescript", label: "TypeScript", icon: "🔷" },
     { name: "javascript", label: "JavaScript", icon: "🟨" },
+    { name: "node", label: "Node.js", icon: "🟢" },
     { name: "postgres", label: "PostgreSQL", icon: "🐘" },
+    { name: "websockets", label: "WebSockets", icon: "🔌" },
+    { name: "aws", label: "AWS", icon: "☁️" },
   ];
 
   const ProjectCard = ({ project, index }) => {
@@ -217,9 +220,9 @@ const Projects = () => {
           </h2>
           
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-12">
-            Discover my latest creations showcasing 
-            <span className="font-semibold text-orange-600 dark:text-cyan-400"> innovative solutions</span> and 
-            <span className="font-semibold text-red-600 dark:text-blue-400"> cutting-edge technologies</span> in modern web development.
+            Selected builds—full-stack work with{' '}
+            <span className="font-semibold text-orange-600 dark:text-cyan-400">real-time features</span> and{' '}
+            <span className="font-semibold text-red-600 dark:text-blue-400">performance-focused</span> frontends.
           </p>
         </div>
 

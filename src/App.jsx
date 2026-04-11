@@ -62,7 +62,7 @@ function App() {
   emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen font-sans bg-gray-50 dark:bg-gray-900 transition-colors duration-300 antialiased">
       <Navbar />
       <main>
         <section id="home">
