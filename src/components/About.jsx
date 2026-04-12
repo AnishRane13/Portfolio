@@ -178,7 +178,7 @@ const About = () => {
                 {/* Resume Button */}
                 <div className="mt-8">
                   <a 
-                    href="https://drive.google.com/file/d/1EYrgFpPRHlbHuPOCBdk3iC4jSYAl2HuE/view?usp=sharing" 
+                    href="https://drive.google.com/file/d/1HF1jWGFlQxmShCXlHThIzZ9l6bQs4T3A/view?usp=sharing" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="group relative w-full inline-flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 dark:from-cyan-500 dark:via-blue-500 dark:to-purple-500 text-white font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 overflow-hidden"
