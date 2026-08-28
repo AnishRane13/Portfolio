@@ -181,7 +181,7 @@ const Contact = () => {
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeading
-          index="07"
+          index="08"
           kicker="CONTACT"
           title="Hire"
           accent="Me"

@@ -8,6 +8,7 @@ const navItems = [
   { name: "Platforms", href: "#platforms" },
   { name: "Projects", href: "#projects" },
   { name: "Education", href: "#education" },
+  { name: "Certs", href: "#certifications" },
 ];
 
 const Navbar = () => {
@@ -62,7 +63,7 @@ const Navbar = () => {
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden items-center gap-8 lg:flex">
+          <div className="hidden items-center gap-6 lg:flex xl:gap-8">
             {navItems.map((item) => (
               <a
                 key={item.name}
