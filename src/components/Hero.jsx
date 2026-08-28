@@ -1,251 +1,267 @@
-import { useState, useEffect } from 'react';
-import { Github, Linkedin, Twitter, ArrowDown, Sparkles, Code2, Zap } from 'lucide-react';
+import { useEffect, useState } from "react";
+import { Github, Linkedin, Twitter } from "lucide-react";
 
-const Hero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isLoaded, setIsLoaded] = useState(false);
+// Each node of the diagram cycles through the stack it stands for.
+const nodes = [
+  {
+    x: 26,
+    y: 22,
+    tone: "accent",
+    items: ["NEXT.JS", "REACT 19", "TYPESCRIPT", "TAILWIND", "REDUX", "VITE"],
+  },
+  {
+    x: 76,
+    y: 22,
+    tone: "flame",
+    items: ["NESTJS", "NODE.JS", "EXPRESS", "DENO", "REST API", "PYTHON"],
+  },
+  {
+    x: 20,
+    y: 50,
+    tone: "accent",
+    items: ["POSTGRESQL", "MONGODB", "DYNAMODB", "REDIS"],
+  },
+  {
+    x: 26,
+    y: 78,
+    tone: "flame",
+    items: ["AWS", "LAMBDA", "COGNITO", "CLOUDFRONT", "DOCKER", "NGINX"],
+  },
+  {
+    x: 76,
+    y: 78,
+    tone: "accent",
+    live: true,
+    items: ["AI AGENTS", "ANTHROPIC", "OPENAI", "WEBSOCKET", "STREAMING"],
+  },
+];
+
+// Live edges carry a flowing dash plus a travelling arrowhead; dim edges stay static.
+const edges = [
+  { x1: 26, y1: 22, x2: 76, y2: 22, tone: "accent", live: true, delay: 0 },
+  { x1: 26, y1: 22, x2: 26, y2: 78, tone: "accent", live: true, delay: 0.8 },
+  { x1: 26, y1: 78, x2: 76, y2: 78, tone: "flame", live: true, delay: 1.6 },
+  { x1: 76, y1: 22, x2: 76, y2: 78, tone: "accent", live: true, delay: 2.4 },
+  { x1: 26, y1: 22, x2: 76, y2: 78, tone: "dim" },
+  { x1: 76, y1: 22, x2: 26, y2: 78, tone: "dim" },
+];
+
+const strokes = {
+  accent: "#2dd4bf",
+  flame: "#ff5a1f",
+  dim: "#2c3030",
+};
+
+const socials = [
+  { Icon: Github, href: "https://github.com/AnishRane13", label: "GitHub" },
+  {
+    Icon: Linkedin,
+    href: "https://www.linkedin.com/in/anish-rane13/",
+    label: "LinkedIn",
+  },
+  { Icon: Twitter, href: "https://x.com/Anish_Rane_178", label: "X" },
+];
+
+const stats = [
+  { value: "2.9 YRS", label: "EXPERIENCE" },
+  { value: "6+", label: "PLATFORMS SHIPPED" },
+  { value: "60%", label: "FASTER AD CREATION" },
+];
+
+const CYCLE_MS = 3600;
+const STAGGER_MS = 900;
+
+// Fixed-size box so rotating labels crossfade without shifting the diagram.
+const DiagramNode = ({ node, index }) => {
+  const [active, setActive] = useState(0);
 
   useEffect(() => {
-    setIsLoaded(true);
-    
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
+    let cycle;
+    const stagger = setTimeout(() => {
+      cycle = setInterval(() => {
+        setActive((current) => (current + 1) % node.items.length);
+      }, CYCLE_MS);
+    }, index * STAGGER_MS);
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+    return () => {
+      clearTimeout(stagger);
+      clearInterval(cycle);
+    };
+  }, [index, node.items.length]);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center py-20 overflow-hidden bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 dark:from-gray-950 dark:via-black dark:to-gray-900">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Floating Orbs */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-orange-500/20 to-pink-500/20 dark:from-cyan-500/20 dark:to-purple-500/20 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-r from-red-500/20 to-orange-500/20 dark:from-blue-500/20 dark:to-cyan-500/20 rounded-full blur-xl animate-pulse animation-delay-500"></div>
-        <div className="absolute bottom-40 left-20 w-40 h-40 bg-gradient-to-r from-pink-500/20 to-red-500/20 dark:from-purple-500/20 dark:to-blue-500/20 rounded-full blur-xl animate-pulse animation-delay-1000"></div>
-        
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
-        
-        {/* Mouse Following Light */}
-        <div 
-          className="absolute w-96 h-96 bg-gradient-to-r from-orange-500/10 via-red-500/10 to-pink-500/10 dark:from-cyan-500/10 dark:via-blue-500/10 dark:to-purple-500/10 rounded-full blur-3xl pointer-events-none transition-all duration-1000 ease-out"
-          style={{
-            left: mousePosition.x - 192,
-            top: mousePosition.y - 192,
-          }}
-        ></div>
-      </div>
+    <div
+      className={`absolute flex h-[46px] w-[124px] -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden border bg-ink sm:h-[54px] sm:w-[164px] ${
+        node.tone === "flame" ? "border-flame" : "border-accent"
+      }`}
+      style={{ left: `${node.x}%`, top: `${node.y}%` }}
+    >
+      {node.items.map((item, i) => (
+        <span
+          key={item}
+          aria-hidden={i !== active}
+          className={`absolute text-[10px] tracking-[0.18em] whitespace-nowrap text-chalk transition-all duration-700 ease-out sm:text-xs ${
+            i === active
+              ? "translate-y-0 opacity-100 blur-0"
+              : "-translate-y-1.5 opacity-0 blur-[3px]"
+          }`}
+        >
+          {item}
+        </span>
+      ))}
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
-          
-          {/* Left Content */}
-          <div className={`flex-1 transition-all duration-1000 ease-out ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'}`}>
-            
-            {/* Greeting Badge */}
-            {/* <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-full border border-gray-200/40 dark:border-gray-700/40 shadow-xl shadow-black/5 dark:shadow-white/5">
-              <Sparkles className="w-4 h-4 text-orange-500 dark:text-cyan-400 animate-pulse" />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                Welcome to my portfolio
-              </span>
-            </div> */}
-
-            {/* Main Heading */}
-            <h1 className="text-5xl lg:text-7xl font-black mb-6 leading-tight">
-              <span className="block text-gray-800 dark:text-white">
-                Hi, I'm
-              </span>
-              <span className="block bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 dark:from-cyan-400 dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-                Anish Rane
-              </span>
-            </h1>
-
-            {/* Subtitle */}
-            <div className="relative mb-8">
-              <h2 className="text-2xl lg:text-4xl font-bold text-gray-700 dark:text-gray-200 mb-4">
-                Full-Stack Software Engineer
-              </h2>
-              <div className="absolute -left-2 top-0 w-1 h-full bg-gradient-to-b from-orange-500 via-red-500 to-pink-500 dark:from-cyan-500 dark:via-blue-500 dark:to-purple-500 rounded-full"></div>
-            </div>
-
-            {/* Description */}
-            <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-400 mb-6 max-w-2xl leading-relaxed">
-              2.5+ years building scalable web apps across{' '}
-              <span className="font-semibold text-orange-600 dark:text-cyan-400">AI/SaaS</span> and{' '}
-              <span className="font-semibold text-red-600 dark:text-blue-400">fintech</span>. I work primarily with
-              React, Node.js, NestJS, and PostgreSQL—and care about measurable outcomes.
-            </p>
-            <div className="flex flex-wrap gap-3 mb-10 max-w-2xl">
-              {[
-                { label: '60%', sub: 'faster ad generation' },
-                { label: '70%', sub: 'lower API latency' },
-                { label: '40%', sub: 'less manual work' },
-              ].map((m) => (
-                <div
-                  key={m.sub}
-                  className="px-4 py-2 rounded-2xl bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 shadow-md"
-                >
-                  <span className="font-bold bg-gradient-to-r from-orange-600 to-red-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">
-                    {m.label}
-                  </span>
-                  <span className="text-sm text-gray-600 dark:text-gray-400 ml-1.5">{m.sub}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <a 
-                href="#projects" 
-                className="group relative px-8 py-4 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 dark:from-cyan-500 dark:via-blue-500 dark:to-purple-500 text-white font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 dark:from-cyan-600 dark:via-blue-600 dark:to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <span className="relative z-10 flex items-center gap-2">
-                  View My Work
-                  <Code2 className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-                </span>
-              </a>
-              
-              <a 
-                href="#contact" 
-                className="group relative px-8 py-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-2 border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-200 font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-red-500/10 to-pink-500/10 dark:from-cyan-500/10 dark:via-blue-500/10 dark:to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <span className="relative z-10 flex items-center gap-2">
-                  Contact Me
-                  <Zap className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-                </span>
-              </a>
-            </div>
-
-            {/* Social Links */}
-            {/* <div className="flex items-center gap-6">
-              <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Follow me:</span>
-              <div className="flex gap-4">
-                {[
-                  { Icon: Github, href: "https://github.com/AnishRane13", label: "GitHub" },
-                  { Icon: Linkedin, href: "https://www.linkedin.com/in/anish-rane13/", label: "LinkedIn" },
-                  { Icon: Twitter, href: "https://x.com/Anish_Rane_178", label: "Twitter" }
-                ].map(({ Icon, href, label }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative p-3 bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-2xl border border-gray-200/40 dark:border-gray-700/40 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 dark:from-cyan-500 dark:via-blue-500 dark:to-purple-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <Icon className="relative z-10 w-5 h-5 text-gray-700 dark:text-gray-300 group-hover:text-white transition-colors duration-300" />
-                  </a>
-                ))}
-              </div>
-            </div> */}
-          </div>
-
-          {/* Right Visual */}
-          <div className={`flex-1 flex justify-center transition-all duration-1000 ease-out delay-200 ${isLoaded ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'}`}>
-            <div className="relative">
-              {/* Main Avatar Container */}
-              <div className="relative w-80 h-80 lg:w-96 lg:h-96">
-                
-                {/* Rotating Rings */}
-                <div className="absolute inset-0 rounded-full border-2 border-gradient-to-r from-orange-500/30 via-red-500/30 to-pink-500/30 dark:from-cyan-500/30 dark:via-blue-500/30 dark:to-purple-500/30 animate-spin-slow"></div>
-                <div className="absolute inset-4 rounded-full border-2 border-gradient-to-r from-pink-500/20 via-red-500/20 to-orange-500/20 dark:from-purple-500/20 dark:via-blue-500/20 dark:to-cyan-500/20 animate-reverse-spin"></div>
-                
-                {/* Floating Elements */}
-                <div className="absolute -top-8 -right-8 w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 dark:from-cyan-500 dark:to-blue-500 rounded-2xl shadow-xl flex items-center justify-center animate-float">
-                  <Code2 className="w-8 h-8 text-white" />
-                </div>
-                
-                <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-gradient-to-r from-red-500 to-pink-500 dark:from-blue-500 dark:to-purple-500 rounded-2xl shadow-xl flex items-center justify-center animate-float animation-delay-500">
-                  <Zap className="w-8 h-8 text-white" />
-                </div>
-                
-                {/* Pulsing Background Circles */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-500/20 via-red-500/20 to-pink-500/20 dark:from-cyan-500/20 dark:via-blue-500/20 dark:to-purple-500/20 animate-pulse"></div>
-                <div className="absolute inset-8 rounded-full bg-gradient-to-r from-red-500/15 via-pink-500/15 to-orange-500/15 dark:from-blue-500/15 dark:via-purple-500/15 dark:to-cyan-500/15 animate-pulse animation-delay-500"></div>
-                <div className="absolute inset-16 rounded-full bg-gradient-to-r from-pink-500/10 via-orange-500/10 to-red-500/10 dark:from-purple-500/10 dark:via-cyan-500/10 dark:to-blue-500/10 animate-pulse animation-delay-1000"></div>
-                
-                {/* Main Avatar */}
-                <div className="absolute inset-20 rounded-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl shadow-2xl shadow-black/10 dark:shadow-white/5 border border-gray-200/50 dark:border-gray-700/50 flex items-center justify-center overflow-hidden">
-                  <div className="relative">
-                    <div className="absolute -inset-4 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 dark:from-cyan-500 dark:via-blue-500 dark:to-purple-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
-                    <span className="relative text-8xl lg:text-9xl" role="img" aria-label="Developer">👨‍💻</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Skill Tags */}
-              <div className="absolute -right-16 top-16">
-                <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl px-4 py-2 rounded-full border border-gray-200/50 dark:border-gray-700/50 shadow-lg animate-float animation-delay-1000">
-                  <span className="text-sm font-semibold bg-gradient-to-r from-orange-600 to-red-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">Next.js</span>
-                </div>
-              </div>
-              
-              <div className="absolute -left-16 bottom-32">
-                <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl px-4 py-2 rounded-full border border-gray-200/50 dark:border-gray-700/50 shadow-lg animate-float animation-delay-1500">
-                  <span className="text-sm font-semibold bg-gradient-to-r from-red-600 to-pink-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">NestJS</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Scroll to explore</span>
-            <div className="p-2 rounded-full bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl border border-gray-200/40 dark:border-gray-700/40 shadow-lg">
-              <ArrowDown className="w-5 h-5 text-orange-500 dark:text-cyan-400" />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <style jsx>{`
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        
-        @keyframes reverse-spin {
-          from { transform: rotate(360deg); }
-          to { transform: rotate(0deg); }
-        }
-        
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-        
-        .animate-spin-slow {
-          animation: spin-slow 20s linear infinite;
-        }
-        
-        .animate-reverse-spin {
-          animation: reverse-spin 15s linear infinite;
-        }
-        
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-        
-        .animation-delay-500 {
-          animation-delay: 0.5s;
-        }
-        
-        .animation-delay-1000 {
-          animation-delay: 1s;
-        }
-        
-        .animation-delay-1500 {
-          animation-delay: 1.5s;
-        }
-      `}</style>
-    </section>
+      {node.live && (
+        <span className="absolute -top-1 -right-1 h-2 w-2 animate-pulse-dot bg-flame" />
+      )}
+    </div>
   );
 };
+
+const Hero = () => (
+  <section id="home" className="relative overflow-hidden border-b border-line">
+    <div className="absolute inset-0 bg-grid opacity-70" />
+    <div className="pointer-events-none absolute -left-40 top-1/3 h-96 w-96 rounded-full bg-accent/5 blur-3xl" />
+    <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-flame/5 blur-3xl" />
+
+    <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-6 pt-36 pb-24 lg:grid-cols-2 lg:gap-12 lg:px-10 lg:pt-40 lg:pb-32">
+      {/* Left: identity */}
+      <div>
+        <p className="mb-8 text-[11px] tracking-[0.3em] text-mist">
+          <span className="text-accent">-- </span>
+          FULL-STACK DEVELOPER
+          <span className="mx-2 text-line-bright">•</span>
+          MUMBAI, INDIA
+        </p>
+
+        <h1 className="text-6xl leading-[0.88] tracking-tight sm:text-7xl lg:text-8xl">
+          Anish
+          <br />
+          Rane
+          <br />
+          Builds <span className="text-accent">AI apps.</span>
+        </h1>
+
+        <p className="mt-10 text-sm leading-relaxed text-mist">
+          2.9 years. React. Next.js. NestJS. Real-time UIs.
+        </p>
+
+        <div className="mt-10 flex flex-wrap gap-4">
+          <a
+            href="#contact"
+            className="bg-flame px-8 py-4 text-[11px] font-bold tracking-[0.2em] text-ink uppercase transition-colors hover:bg-chalk"
+          >
+            Get In Touch
+          </a>
+          <a
+            href="#experience"
+            className="border border-line-bright px-8 py-4 text-[11px] font-bold tracking-[0.2em] text-chalk uppercase transition-colors hover:border-accent hover:text-accent"
+          >
+            View Experience
+          </a>
+        </div>
+
+        <div className="mt-12 flex gap-3">
+          {socials.map(({ Icon, href, label }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="border border-line p-3 text-mist transition-colors hover:border-accent hover:text-accent"
+            >
+              <Icon className="h-4 w-4" />
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-14 flex flex-wrap items-center gap-x-10 gap-y-6 border-t border-line pt-8">
+          {stats.map(({ value, label }, i) => (
+            <div key={label} className="flex items-center gap-10">
+              {i > 0 && <span className="hidden h-8 w-px bg-line sm:block" />}
+              <div>
+                <p className="text-sm text-accent">{value}</p>
+                <p className="mt-1 text-[10px] tracking-[0.25em] text-mist">
+                  {label}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Right: architecture diagram */}
+      <div className="relative aspect-square w-full border border-line bg-panel/60">
+        <svg
+          className="absolute inset-0 h-full w-full"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          {edges.map((edge, i) => {
+            const color = strokes[edge.tone];
+            const path = `M${edge.x1} ${edge.y1} L${edge.x2} ${edge.y2}`;
+
+            return (
+              <g key={i}>
+                {/* base track */}
+                <line
+                  x1={edge.x1}
+                  y1={edge.y1}
+                  x2={edge.x2}
+                  y2={edge.y2}
+                  stroke={color}
+                  strokeWidth="1"
+                  vectorEffect="non-scaling-stroke"
+                  opacity={edge.tone === "dim" ? 1 : 0.25}
+                />
+
+                {edge.live && (
+                  <>
+                    {/* flowing dashes */}
+                    <line
+                      className="animate-dash"
+                      x1={edge.x1}
+                      y1={edge.y1}
+                      x2={edge.x2}
+                      y2={edge.y2}
+                      stroke={color}
+                      strokeWidth="1"
+                      vectorEffect="non-scaling-stroke"
+                      opacity="0.8"
+                    />
+
+                    {/* travelling arrowhead */}
+                    <polygon
+                      className="flow-arrow"
+                      points="0,-1.7 3.2,0 0,1.7"
+                      fill={color}
+                    >
+                      <animateMotion
+                        dur="3.2s"
+                        begin={`${edge.delay}s`}
+                        repeatCount="indefinite"
+                        rotate="auto"
+                        path={path}
+                      />
+                    </polygon>
+                  </>
+                )}
+              </g>
+            );
+          })}
+        </svg>
+
+        {nodes.map((node, i) => (
+          <DiagramNode key={i} node={node} index={i} />
+        ))}
+
+        <p className="absolute bottom-4 left-4 text-[10px] tracking-[0.25em] text-mist">
+          STREAMING ARCHITECTURE
+        </p>
+      </div>
+    </div>
+  </section>
+);
 
 export default Hero;

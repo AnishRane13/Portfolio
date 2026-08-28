@@ -1,379 +1,76 @@
-import { useState, useEffect } from 'react';
-import { MapPin, Mail, Calendar, Award, Download, Code, GraduationCap, Briefcase, Sparkles, Trophy, Zap } from 'lucide-react';
+import { Download, Mail, MapPin, Briefcase } from "lucide-react";
+import SectionHeading from "./SectionHeading";
 
-const About = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [activeTab, setActiveTab] = useState('overview');
+const RESUME_URL =
+  "https://drive.google.com/file/d/1HF1jWGFlQxmShCXlHThIzZ9l6bQs4T3A/view?usp=sharing";
 
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+const paragraphs = [
+  "I am a Full-Stack Developer with 2.9+ years of experience shipping production web applications in AI/SaaS and fintech. Currently at Mactores Cognition, I build AI-powered platforms for institutional users — private equity deal workspaces and data ingestion consoles.",
+  "My work sits where dense product UI meets real-time infrastructure: React and Next.js front ends, NestJS and Node services, PostgreSQL and DynamoDB, and WebSocket streams that keep AI responses and pipeline metrics live without a single refresh button.",
+  "Whether it is an agentic due-diligence workflow or a Stripe-backed lending dashboard, I treat the frontend as a product surface — typed, componentised, and accountable to whatever the backend is actually doing.",
+];
 
-  const personalInfo = [
-    { icon: MapPin, label: 'Location', value: 'Mumbai, Maharashtra' },
-    { icon: Mail, label: 'Email', value: 'anishrane1305@gmail.com' },
-    { icon: Calendar, label: 'Experience', value: '2.5+ years' },
-    { icon: Award, label: 'Focus', value: 'Full-stack web (AI/SaaS, fintech)' }
-  ];
+const facts = [
+  { icon: Briefcase, label: "ROLE", value: "Full-Stack Developer @ Mactores" },
+  { icon: MapPin, label: "BASED IN", value: "Mumbai, Maharashtra, India" },
+  { icon: Mail, label: "EMAIL", value: "anishrane1305@gmail.com" },
+];
 
-  const education = [
-    {
-      degree: "Master's in Computer Application",
-      institution: "VESIT",
-      period: "November 2022 - May 2024",
-      cgpa: "8.5",
-      icon: GraduationCap
-    },
-    {
-      degree: "Bachelor of Science (Information Technology)",
-      institution: "Sathaye College",
-      period: "July 2019 - May 2022",
-      cgpa: "8.24",
-      icon: GraduationCap
-    }
-  ];
+const About = () => (
+  <section id="about" className="border-b border-line py-24 lg:py-32">
+    <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <SectionHeading index="01" kicker="PROFILE" title="About" accent="Me" />
 
-  const experience = [
-    {
-      title: "FullStack Developer",
-      company: "Mactores Cognition Private Limited",
-      period: "November 2025 – Present",
-      type: "Full-time",
-      icon: Briefcase,
-      highlights: [
-        "Built an AI-powered ad generation platform (React, Vite, NestJS, PostgreSQL), improving ad generation speed by 60% with a custom editor and real-time preview.",
-        "Integrated OpenAI and Anthropic APIs for dynamic chat UI and auto-populated templates, reducing manual input by 40%.",
-        "Designed invitation-based onboarding with Next.js, AWS Cognito, and DynamoDB—time-limited tokens and invitation tracking.",
-        "Developed real-time pipeline monitoring with WebSockets: streaming logs, live status, auto-reconnect, and stage-based visualization.",
-        "Integrated a context-aware AI chat (Next.js, WebSockets) for codebase and database insights with streaming responses."
-      ]
-    },
-    {
-      title: "Software Developer",
-      company: "Chintan Systems Private Limited",
-      period: "January 2024 – November 2025",
-      type: "Full-time",
-      icon: Code,
-      highlights: [
-        "Led frontend for a society management platform (React, Vite, Tailwind) serving 1,000+ residents with billing and accounts.",
-        "Built a full-stack P2P lending app—React frontend and Node.js/PostgreSQL backend including loan lifecycle and dashboards.",
-        "Implemented Stripe and Razorpay with webhook-driven flows to improve transaction success across platforms."
-      ]
-    }
-  ];
-
-  const skills = {
-    frontend: [
-      "React.js",
-      "Next.js (v14+)",
-      "TypeScript",
-      "JavaScript (ES6+)",
-      "Redux",
-      "Tailwind CSS",
-      "React Hooks"
-    ],
-    backend: [
-      "Node.js",
-      "NestJS",
-      "Express.js",
-      "REST APIs",
-      "WebSockets",
-      "PostgreSQL",
-      "MongoDB"
-    ],
-    tools: [
-      "AWS (EC2, S3)",
-      "Azure",
-      "NGINX",
-      "Stripe",
-      "Razorpay",
-      "HubSpot (HubL)",
-      "Strapi",
-      "Git"
-    ]
-  };
-
-  return (
-    <section id="about" className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-950 dark:via-gray-900 dark:to-black relative overflow-hidden">
-      
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-r from-orange-500/10 via-red-500/10 to-pink-500/10 dark:from-cyan-500/10 dark:via-blue-500/10 dark:to-purple-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-40 left-20 w-80 h-80 bg-gradient-to-r from-pink-500/10 via-red-500/10 to-orange-500/10 dark:from-purple-500/10 dark:via-blue-500/10 dark:to-cyan-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.01)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        
-        {/* Section Header */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-full border border-gray-200/40 dark:border-gray-700/40 shadow-xl shadow-black/5 dark:shadow-white/5">
-            <Sparkles className="w-4 h-4 text-orange-500 dark:text-cyan-400 animate-pulse" />
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Get to know me</span>
-          </div>
-          
-          <h2 className="text-4xl lg:text-6xl font-black mb-4">
-            <span className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 dark:from-cyan-400 dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-              About Me
-            </span>
-          </h2>
-          
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Full-stack engineer with 2.5+ years shipping scalable apps in AI/SaaS and fintech
-          </p>
+      <div className="mt-16 grid gap-12 lg:grid-cols-[1.6fr_1fr]">
+        {/* Bio */}
+        <div
+          className="space-y-6 border-l-2 border-accent pl-6 lg:pl-8"
+          data-aos="fade-up"
+        >
+          {paragraphs.map((text) => (
+            <p key={text} className="text-sm leading-[1.9] text-mist">
+              {text}
+            </p>
+          ))}
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-16 items-start">
-          
-          {/* Left Side - Visual Profile */}
-          <div className={`lg:w-2/5 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
-            
-            {/* Profile Card */}
-            <div className="relative mb-8">
-              <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-2xl shadow-black/5 dark:shadow-white/5">
-                
-                {/* Avatar Section */}
-                <div className="relative mb-8">
-                  <div className="w-48 h-48 mx-auto relative">
-                    {/* Rotating Background */}
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 dark:from-cyan-500 dark:via-blue-500 dark:to-purple-500 animate-spin-slow opacity-20"></div>
-                    
-                    {/* Main Avatar */}
-                    <div className="absolute inset-2 rounded-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl shadow-xl border border-gray-200/50 dark:border-gray-700/50 flex items-center justify-center overflow-hidden">
-                      <div className="relative">
-                        <div className="absolute -inset-4 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 dark:from-cyan-500 dark:via-blue-500 dark:to-purple-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
-                        <span className="relative text-7xl" role="img" aria-label="Developer">👨‍💻</span>
-                      </div>
-                    </div>
-                    
-                    {/* Floating Badges */}
-                    <div className="absolute -top-4 -right-4 bg-gradient-to-r from-orange-500 to-red-500 dark:from-cyan-500 dark:to-blue-500 rounded-2xl p-3 shadow-xl animate-float">
-                      <Trophy className="w-6 h-6 text-white" />
-                    </div>
-                  </div>
-                  
-                  <div className="text-center mt-6">
-                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">Anish Rane</h3>
-                    <p className="text-lg font-semibold bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 dark:from-cyan-400 dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-                      Full-Stack Software Engineer
-                    </p>
-                  </div>
-                </div>
+        {/* Fact card */}
+        <div
+          className="border border-line bg-panel p-8"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <p className="mb-8 text-[10px] tracking-[0.3em] text-accent">
+            AT A GLANCE
+          </p>
 
-                {/* Personal Info */}
-                <div className="space-y-4">
-                  {personalInfo.map((info, index) => (
-                    <div key={info.label} className="flex items-center gap-4 p-3 rounded-2xl bg-gray-50/80 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200/30 dark:border-gray-700/30">
-                      <div className="p-2 rounded-xl bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 dark:from-cyan-500 dark:via-blue-500 dark:to-purple-500 shadow-lg">
-                        <info.icon className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-medium text-gray-600 dark:text-gray-400">{info.label}</p>
-                        <p className="text-base font-semibold text-gray-800 dark:text-white">{info.value}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Resume Button */}
-                <div className="mt-8">
-                  <a 
-                    href="https://drive.google.com/file/d/1HF1jWGFlQxmShCXlHThIzZ9l6bQs4T3A/view?usp=sharing" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="group relative w-full inline-flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 dark:from-cyan-500 dark:via-blue-500 dark:to-purple-500 text-white font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 overflow-hidden"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 dark:from-cyan-600 dark:via-blue-600 dark:to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <Download className="relative z-10 w-5 h-5 group-hover:animate-bounce" />
-                    <span className="relative z-10">View Resume</span>
-                  </a>
+          <div className="space-y-6">
+            {facts.map(({ icon: Icon, label, value }) => (
+              <div key={label} className="flex items-start gap-4">
+                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-flame" />
+                <div className="min-w-0">
+                  <p className="text-[10px] tracking-[0.25em] text-mist">
+                    {label}
+                  </p>
+                  <p className="mt-1 truncate text-xs text-chalk">{value}</p>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
 
-          {/* Right Side - Content */}
-          <div className={`lg:w-3/5 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-            
-            {/* Tab Navigation */}
-            <div className="flex flex-wrap gap-2 mb-8">
-              {[
-                { id: 'overview', label: 'Overview', icon: Sparkles },
-                { id: 'education', label: 'Education', icon: GraduationCap },
-                { id: 'experience', label: 'Experience', icon: Briefcase },
-                { id: 'skills', label: 'Skills', icon: Zap }
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`group relative flex items-center gap-2 px-6 py-3 rounded-2xl font-semibold transition-all duration-300 overflow-hidden ${
-                    activeTab === tab.id
-                      ? 'bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 dark:from-cyan-500 dark:via-blue-500 dark:to-purple-500 text-white shadow-xl'
-                      : 'bg-white/60 dark:bg-gray-900/60 text-gray-700 dark:text-gray-300 hover:bg-white/80 dark:hover:bg-gray-900/80'
-                  } backdrop-blur-xl border border-gray-200/40 dark:border-gray-700/40`}
-                >
-                  <tab.icon className="w-5 h-5" />
-                  <span>{tab.label}</span>
-                </button>
-              ))}
-            </div>
-
-            {/* Tab Content */}
-            <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-3xl p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-2xl shadow-black/5 dark:shadow-white/5 min-h-[600px]">
-              
-              {/* Overview Tab */}
-              {activeTab === 'overview' && (
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Hello! I'm Anish Rane</h3>
-                  
-                  <div className="space-y-4 text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
-                    <p>
-                      I'm a <span className="font-semibold text-orange-600 dark:text-cyan-400">Full-Stack Software Engineer</span> with 2.5+ years
-                      building scalable web applications across AI/SaaS and fintech. I focus on React.js, Node.js, NestJS, and PostgreSQL—and on
-                      outcomes: faster features, lower latency, and fewer manual steps.
-                    </p>
-                    
-                    <p>
-                      Recent work includes an <span className="font-semibold text-red-600 dark:text-blue-400">AI-powered ad platform</span> with a custom editor
-                      and real-time preview, secure onboarding with Cognito and DynamoDB, and live pipeline monitoring over WebSockets.
-                      Earlier, I led frontend for a society management product serving 1,000+ residents and shipped a full-stack P2P lending app with
-                      Stripe and Razorpay integrations.
-                    </p>
-                    
-                    <p>
-                      I'm now at <span className="font-semibold text-pink-600 dark:text-purple-400">Mactores Cognition</span>, building products that combine
-                      strong UX with reliable backends. Outside of work I stay curious about tooling, performance, and clean architecture.
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              {/* Education Tab */}
-              {activeTab === 'education' && (
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Educational Background</h3>
-                  
-                  <div className="space-y-6">
-                    {education.map((edu, index) => (
-                      <div key={index} className="relative">
-                        <div className="flex items-start gap-4 p-6 rounded-2xl bg-gray-50/80 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200/30 dark:border-gray-700/30 hover:shadow-lg transition-all duration-300">
-                          <div className="p-3 rounded-xl bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 dark:from-cyan-500 dark:via-blue-500 dark:to-purple-500 shadow-lg">
-                            <edu.icon className="w-6 h-6 text-white" />
-                          </div>
-                          <div className="flex-1">
-                            <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-2">{edu.degree}</h4>
-                            <p className="text-lg font-semibold text-orange-600 dark:text-cyan-400 mb-2">{edu.institution}</p>
-                            <p className="text-gray-600 dark:text-gray-400 mb-2">{edu.period}</p>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/60 dark:bg-gray-900/60 rounded-full border border-gray-200/40 dark:border-gray-700/40">
-                              <Award className="w-4 h-4 text-yellow-500" />
-                              <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">CGPA: {edu.cgpa}</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Experience Tab */}
-              {activeTab === 'experience' && (
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Professional Experience</h3>
-                  
-                  <div className="space-y-8">
-                    {experience.map((exp, index) => (
-                      <div key={index} className="relative">
-                        <div className="p-6 rounded-2xl bg-gray-50/80 dark:bg-gray-800/80 backdrop-blur-xl border border-gray-200/30 dark:border-gray-700/30 hover:shadow-lg transition-all duration-300">
-                          <div className="flex items-start gap-4 mb-6">
-                            <div className="p-3 rounded-xl bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 dark:from-cyan-500 dark:via-blue-500 dark:to-purple-500 shadow-lg">
-                              <exp.icon className="w-6 h-6 text-white" />
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-2">{exp.title}</h4>
-                              <p className="text-lg font-semibold text-orange-600 dark:text-cyan-400 mb-2">{exp.company}</p>
-                              <div className="flex items-center gap-4">
-                                <p className="text-gray-600 dark:text-gray-400">{exp.period}</p>
-                                <span className="px-3 py-1 bg-white/60 dark:bg-gray-900/60 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-200/40 dark:border-gray-700/40">
-                                  {exp.type}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          
-                          <div className="space-y-3">
-                            {exp.highlights.map((highlight, hIndex) => (
-                              <div key={hIndex} className="flex items-start gap-3">
-                                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 dark:from-cyan-500 dark:to-purple-500 mt-2 flex-shrink-0"></div>
-                                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{highlight}</p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Skills Tab */}
-              {activeTab === 'skills' && (
-                <div className="space-y-8">
-                  <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Technical Skills</h3>
-                  
-                  <div className="space-y-8">
-                    {Object.entries(skills).map(([category, skillList], index) => (
-                      <div key={category}>
-                        <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-4 capitalize">
-                          {category === 'frontend' ? 'Frontend' : 
-                           category === 'backend' ? 'Backend & databases' : 
-                           'Cloud & tools'}
-                        </h4>
-                        
-                        <div className="flex flex-wrap gap-3">
-                          {skillList.map((skill, skillIndex) => (
-                            <div
-                              key={skill}
-                              className="group relative px-4 py-2 bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl rounded-2xl border border-gray-200/40 dark:border-gray-700/40 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden"
-                            >
-                              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-red-500/10 to-pink-500/10 dark:from-cyan-500/10 dark:via-blue-500/10 dark:to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                              <span className="relative z-10 text-sm font-semibold text-gray-700 dark:text-gray-300 group-hover:text-orange-600 dark:group-hover:text-cyan-400 transition-colors duration-300">
-                                {skill}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
+          <a
+            href={RESUME_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-10 flex items-center justify-center gap-3 border border-line-bright py-4 text-[11px] font-bold tracking-[0.2em] text-chalk uppercase transition-colors hover:border-accent hover:text-accent"
+          >
+            <Download className="h-4 w-4" />
+            View Resume
+          </a>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-8px); }
-        }
-        
-        .animate-spin-slow {
-          animation: spin-slow 20s linear infinite;
-        }
-        
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-      `}</style>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default About;

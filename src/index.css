@@ -1,17 +1,118 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme {
-  --font-family-sans: "DM Sans", "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo Black", "Arial Black", Impact, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-ink: #050505;
+  --color-panel: #0b0c0c;
+  --color-panel-2: #101112;
+  --color-line: #232626;
+  --color-line-bright: #3a3f40;
+  --color-accent: #2dd4bf;
+  --color-flame: #ff5a1f;
+  --color-mist: #8b9295;
+  --color-chalk: #e9ebeb;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  background-color: var(--color-ink);
+  color-scheme: dark;
 }
 
 @layer base {
   body {
-    @apply font-sans antialiased;
+    @apply bg-ink text-chalk font-mono antialiased;
   }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display uppercase;
+  }
+}
+
+@layer utilities {
+  /* faint blueprint grid used behind the hero + contact */
+  .bg-grid {
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.025) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .animate-blink {
+    animation: blink 1.2s steps(2, start) infinite;
+  }
+
+  .animate-pulse-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  .animate-dash {
+    stroke-dasharray: 4 6;
+    animation: dash 1.6s linear infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-dash,
+  .animate-blink,
+  .animate-pulse-dot {
+    animation: none;
+  }
+
+  /* SMIL-driven arrows can't be paused from CSS, so hide them instead */
+  .flow-arrow {
+    display: none;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.7);
+  }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+/* thin, dark scrollbar to match the console look */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0b0b;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2e2e;
+  border: 2px solid #0a0b0b;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3f40;
 }
