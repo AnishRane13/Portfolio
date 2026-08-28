@@ -5,7 +5,7 @@ const RESUME_URL =
   "https://drive.google.com/file/d/1HF1jWGFlQxmShCXlHThIzZ9l6bQs4T3A/view?usp=sharing";
 
 const paragraphs = [
-  "I am a Full-Stack Developer with 2.9+ years of experience shipping production web applications in AI/SaaS and fintech. Currently at Mactores Cognition, I build AI-powered platforms for institutional users — private equity deal workspaces and data ingestion consoles.",
+  "I am a Full-Stack Developer with 2.10+ years of experience shipping production web applications in AI/SaaS and fintech. Currently at Mactores Cognition, I build AI-powered platforms for institutional users — private equity deal workspaces and data ingestion consoles.",
   "My work sits where dense product UI meets real-time infrastructure: React and Next.js front ends, NestJS and Node services, PostgreSQL and DynamoDB, and WebSocket streams that keep AI responses and pipeline metrics live without a single refresh button.",
   "Whether it is an agentic due-diligence workflow or a Stripe-backed lending dashboard, I treat the frontend as a product surface — typed, componentised, and accountable to whatever the backend is actually doing.",
 ];

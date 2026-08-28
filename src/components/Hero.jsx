@@ -63,7 +63,7 @@ const socials = [
 ];
 
 const stats = [
-  { value: "2.9 YRS", label: "EXPERIENCE" },
+  { value: "2.10 YRS", label: "EXPERIENCE" },
   { value: "6+", label: "PLATFORMS SHIPPED" },
   { value: "60%", label: "FASTER AD CREATION" },
 ];
@@ -142,7 +142,7 @@ const Hero = () => (
         </h1>
 
         <p className="mt-10 text-sm leading-relaxed text-mist">
-          2.9 years. React. Next.js. NestJS. Real-time UIs.
+          2.10 years. React. Next.js. NestJS. Real-time UIs.
         </p>
 
         <div className="mt-10 flex flex-wrap gap-4">
